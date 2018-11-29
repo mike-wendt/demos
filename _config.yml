@@ -9,5 +9,5 @@ permalink: pretty
 exclude: ["README.md"]
 
 aux_links:
-    "Visit the RAPIDS on GitHub":
+    "View RAPIDS on GitHub":
       - "https://github.com/rapidsai"
