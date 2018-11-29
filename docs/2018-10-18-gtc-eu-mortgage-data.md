@@ -1,4 +1,5 @@
 ---
+layout: default
 has_children: false
 nav_order: 2
 title: 2018 GTC EU - Mortgage Demo
