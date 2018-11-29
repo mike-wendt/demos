@@ -2,7 +2,6 @@
 has_children: false
 nav_order: 1
 title: 2018 GTC EU - Mortgage Data Demo
-permalink: 2018-10-18-gtc-eu-mortgage-data.md
 ---
 
 ## 2018-10 GTC EU - Mortgage Data Demo
