@@ -11,3 +11,6 @@ exclude: ["README.md"]
 aux_links:
     "View RAPIDS on GitHub":
       - "https://github.com/rapidsai"
+
+# Enable or disable the site search
+search_enabled: true
