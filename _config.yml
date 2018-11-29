@@ -1,1 +1,6 @@
 remote_theme: pmarsceill/just-the-docs
+title: RAPIDS Datasets
+aux_links:
+    "Visit the RAPIDS site":
+      - "https://rapids.ai"
+search_enabled: true
