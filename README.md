@@ -4,8 +4,10 @@ nav_order: 1
 title: Home
 ---
 
-<div align="left"><img src="logo.png" width="265px"/></div>
+<div align="left"><img src="logo.png" width="105px"/></div>
 
 ## Overview
 
-This site contains datasets used for RAPIDS demos and notebooks for public use.
+Explore datasets used for RAPIDS containers, demos, and notebooks all available for public use
+
+For more information about RAPIDS visit the [RAPIDS site](https://rapids.ai/)
