@@ -1,5 +1,13 @@
+# theme used
 remote_theme: pmarsceill/just-the-docs
+
 title: RAPIDS Datasets
+description: Datasets used by RAPIDS demos
+baseurl: "/datasets-new/" # the subpath of your site, e.g. /blog
+
+permalink: pretty
+exclude: ["README.md"]
+
 aux_links:
-    "Visit the RAPIDS site":
-      - "https://rapids.ai"
+    "Visit the RAPIDS on GitHub":
+      - "https://github.com/rapidsai"
