@@ -1,3 +1,9 @@
+---
+has_children: false
+nav_order: 1
+title: Home
+---
+
 <div align="left"><img src="logo.png" width="265px"/></div>
 
 ## Overview
