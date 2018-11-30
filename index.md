@@ -29,3 +29,7 @@ _Instructions coming soon_
 ## Contributing demos
 
 Create a PR with your updates and see the [contribution]() page for more information
+
+## Issues?
+
+File an issue [here](https://github.com/rapidsai/demos/issues/new) for any unexpected problems encountered with any of the information on this site.
