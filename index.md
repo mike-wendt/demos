@@ -25,3 +25,7 @@ _Instructions coming soon_
 ### Local installation: Use the demo notebooks
 
 _Instructions coming soon_
+
+## Contributing demos
+
+Create a PR with your updates and see the [contribution]() page for more information
