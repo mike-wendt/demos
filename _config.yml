@@ -1,9 +1,9 @@
 # theme used
 remote_theme: pmarsceill/just-the-docs
 
-title: RAPIDS Datasets
-description: Datasets used by RAPIDS demos
-baseurl: "/datasets-new/" # the subpath of your site, e.g. /blog
+title: RAPIDS Demos
+description: Containers, demos, and notebooks to explore RAPIDS
+baseurl: "/demos/" # the subpath of your site, e.g. /blog
 
 permalink: pretty
 exclude: ["README.md"]
