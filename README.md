@@ -1,13 +1,5 @@
----
-has_children: false
-nav_order: 1
-title: Home
----
+# RAPIDS Demos
 
-<div align="left"><img src="logo.png" width="105px"/></div>
+Jekyll site for RAPIDS Demos from the RAPIDS team and community.
 
-## Overview
-
-Explore datasets used for RAPIDS containers, demos, and notebooks all available for public use
-
-For more information about RAPIDS visit the [RAPIDS site](https://rapids.ai/)
+https://rapidsai.github.io/demos/
