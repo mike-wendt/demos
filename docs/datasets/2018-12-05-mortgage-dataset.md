@@ -5,7 +5,7 @@ parent: Datasets
 title: Mortgage Data
 ---
 
-# Mortgage Dataset for Notebook
+# Mortgage Dataset
 
 ## Data source
 
