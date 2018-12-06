@@ -50,7 +50,7 @@ Notebooks can be found in two directories within the container:
 * `/rapids/notebooks/cuml` - cuML demo notebooks
   * **NOTE:** Data for these notebooks is included in the docker and requires the following command to be run for decompression: `cd /rapids/notebooks/cuml/data && gunzip cuml/data/mortgage.npy.gz`
 * `/rapids/notebooks/mortgage` - cuDF, Dask, XGBoost demo notebook
-  * This notebook requires additional data to be downloaded, and setup see notebook `E2E.ipynb` for more details
+  * This notebook requires download of [Mortgage Data](datasets/mortgage-data), see notebook `E2E.ipynb` for more details
 
 ## Custom Data and Advanced Usage 
 
