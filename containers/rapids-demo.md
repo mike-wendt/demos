@@ -7,9 +7,11 @@ permalink: containers/rapids-demo
 ---
 
 # RAPIDS Demo Container
-{:.no_toc}
 
-RAPIDS - Real-time Acceleration Platform for Integrated Data Science{: .fs-6 .fw-300 }
+RAPIDS - Real-time Acceleration Platform for Integrated Data Science {: .fs-6 .fw-300 }
+
+1. TOC
+{:toc}
 
 ## Prerequisites
 
