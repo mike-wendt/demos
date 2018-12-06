@@ -6,7 +6,7 @@ title: Mortgage Data
 permalink: datasets/mortgage-data
 ---
 
-# Mortgage Dataset
+# Mortgage Data
 
 ## Data source
 
