@@ -3,7 +3,7 @@ layout: default
 title: Containers
 nav_order: 2
 has_children: true
-permalink: docs/containers
+permalink: containers
 ---
 
 # Containers
