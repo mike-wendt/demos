@@ -3,7 +3,7 @@ layout: default
 title: Datasets
 nav_order: 2
 has_children: true
-permalink: docs/datasets
+permalink: datasets
 ---
 
 # Datasets
