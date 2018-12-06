@@ -64,7 +64,7 @@ docker run --runtime=nvidia \
 source activate rapids
 ```
 
-3.  Download the mortgage dataset, following the instructions provided at <https://rapidsai.github.io/demos//datasets/mortgage-data>
+3.  Download the mortgage dataset, following the instructions provided at <https://rapidsai.github.io/demos/datasets/mortgage-data>
 
     You will need to update paths and years in the notebook (see below) depending on which subset of the mortgage data you download and where you install it.
 
