@@ -3,6 +3,7 @@ layout: default
 nav_order: 1
 parent: Datasets
 title: Mortgage Data
+permalink: datasets/mortgage-data
 ---
 
 # Mortgage Dataset
