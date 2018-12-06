@@ -9,8 +9,8 @@ permalink: pretty
 exclude: ["README.md","_drafts"]
 
 aux_links:
-    "View RAPIDS on GitHub":
-      - "https://github.com/rapidsai"
+    "Visit the RAPIDS site":
+      - "https://rapids.ai"
 
 # Enable or disable the site search
-search_enabled: true
+search_enabled: false
