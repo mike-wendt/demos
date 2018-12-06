@@ -8,7 +8,7 @@ permalink: containers/rapids-demo
 
 # RAPIDS Demo Container
 
-RAPIDS - Real-time Acceleration Platform for Integrated Data Science
+Get up and running with our preconfigured RAPIDS demo container. Featuring demo notebooks for cuDF, cuML, Dask, and XGBoost.
 {: .fs-6 .fw-300 }
 
 1. TOC
