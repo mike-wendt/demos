@@ -16,19 +16,17 @@ Leverage containers, demos, and notebooks from the RAPIDS team and community to 
 
 ---
 
-## Getting started
+## Run the RAPIDS Container
 
-### Prerequisites
+The RAPIDS Docker containers are configured to run RAPIDS and provide example data/notebooks to get started quickly.
 
-*   GPU support
-    *   Compute Capability 6.0 (Pascal Architecture) or higher
-*   CUDA support
-    *   9.2 or newer
-*   OS support
-    *   Ubuntu 16.04 LTS (tested and confirmed working)
-*   Docker support
-    *   [Docker CE v18+](https://docs.docker.com/install/linux/docker-ce/ubuntu/) - _apt for Ubuntu 16.04 **doesn't** include v18+ by default_
-    *   [nvidia-docker v2+](https://github.com/nvidia/nvidia-docker/wiki/Installation-%28version-2.0%29)
+### Container Host Prerequisites
+
+* NVIDIA Pascal™ GPU architecture or better
+* CUDA 9.2 or 10.0 compatible nvidia driver
+* Ubuntu 16.04 or 18.04
+* Docker CE v18+
+* [nvidia-docker](https://github.com/nvidia/nvidia-docker/wiki/Installation-%28version-2.0%29) v2+
 
 ### Start Container and Notebook Server
 
@@ -54,7 +52,7 @@ Notebooks can be found in two directories within the container:
 * `/rapids/notebooks/mortgage` - cuDF, Dask, XGBoost demo notebook
   * This notebook requires additional data to be downloaded, and setup see notebook `E2E.ipynb` for more details
 
-## Custom data and advanced usage 
+## Custom Data and Advanced Usage 
 
 See the [RAPIDS Demo Container](containers/rapids-demo) page for more information about using custom datasets.
 
