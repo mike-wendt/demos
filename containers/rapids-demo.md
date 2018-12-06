@@ -8,7 +8,8 @@ permalink: containers/rapids-demo
 
 # RAPIDS Demo Container
 
-RAPIDS - Real-time Acceleration Platform for Integrated Data Science {: .fs-6 .fw-300 }
+RAPIDS - Real-time Acceleration Platform for Integrated Data Science
+{: .fs-6 .fw-300 }
 
 1. TOC
 {:toc}
@@ -27,8 +28,8 @@ RAPIDS - Real-time Acceleration Platform for Integrated Data Science {: .fs-6 .f
 
 ## Container Hosts
 
-* Docker Hub - https://hub.docker.com/r/rapidsai/rapidsai/
-* NVIDA GPU Cloud - https://ngc.nvidia.com/
+* Docker Hub - <https://hub.docker.com/r/rapidsai/rapidsai/>
+* NVIDA GPU Cloud - <https://ngc.nvidia.com/>
 
 ## Available Tags
 
@@ -48,24 +49,30 @@ RAPIDS - Real-time Acceleration Platform for Integrated Data Science {: .fs-6 .f
 
 1.  First launch an interactive session:
 
-        docker run --runtime=nvidia \
-                --rm -it \
-                -p 8888:8888 \
-                -p 8787:8787 \
-                -p 8786:8786 \
-                rapidsai/rapidsai:ubuntu1604_cuda92_py35
+```bash
+docker run --runtime=nvidia \
+   --rm -it \
+   -p 8888:8888 \
+   -p 8787:8787 \
+   -p 8786:8786 \
+   rapidsai/rapidsai:ubuntu1604_cuda92_py35
+```
 
 2.  Activate the `rapids` conda environment:
 
-        source activate rapids
+```bash
+source activate rapids
+```
 
-3.  Download the mortgage dataset, following the instructions provided at https://rapidsai.github.io/demos//datasets/mortgage-data
+3.  Download the mortgage dataset, following the instructions provided at <https://rapidsai.github.io/demos//datasets/mortgage-data>
 
     You will need to update paths and years in the notebook (see below) depending on which subset of the mortgage data you download and where you install it.
 
 4.  Launch the JupyterLab environment with
 
-        bash /rapids/utils/start_jupyter.sh
+```bash
+bash /rapids/utils/start_jupyter.sh
+```
 
 5.  Open your web browser, and navigate to  
     `{IPADDR}:8888` (e.g.) `12.34.567.89:8888`  
@@ -75,23 +82,29 @@ In `/rapids/notebooks` there are example notebooks, including one called `E2E.ip
 
 You are free to modify the above steps. For example, you can launch an interactive session with your own data:
 
-    docker run --runtime=nvidia \
-               --rm -it \
-               -p 8888:8888 \
-               -p 8787:8787 \
-               -p 8786:8786 \
-               -v /path/to/host/data:/rapids/my_data
-               rapidsai/rapidsai:ubuntu1604_cuda92_py35
+```bash
+docker run --runtime=nvidia \
+   --rm -it \
+   -p 8888:8888 \
+   -p 8787:8787 \
+   -p 8786:8786 \
+   -v /path/to/host/data:/rapids/my_data
+   rapidsai/rapidsai:ubuntu1604_cuda92_py35
+```
 
 This will map data from your host operating system to the container OS in the `/rapids/my_data` directory. You may need to modify the provided notebooks for the new data paths. 
 
 You can check the documentation for RAPIDS APIs inside the JupyterLab notebook using a `?` command, like this:
 
-    [1] ?cudf.read_csv
+```
+[1] ?cudf.read_csv
+```
 
 This prints the function signature and its usage documentation. If this is not enough, you can see the full code for the function using `??`:
 
-    [1] ??pygdf.read_csv
+```
+[1] ??pygdf.read_csv
+```
 
 Check out the RAPIDS [documentation](http://rapids.ai/documentation.html) for more detailed information.
 
@@ -99,12 +112,14 @@ Check out the RAPIDS [documentation](http://rapids.ai/documentation.html) for mo
 
 In the notebook, you should see a cell like this:
 
-    acq_data_path = "/rapids/data/mortgage/acq"
-    perf_data_path = "/rapids/data/mortgage/perf"
-    col_names_path = "/rapids/data/mortgage/names.csv"
-    start_year = 2000
-    end_year = 2002 # end_year is not inclusive
-    part_count = 11 # the number of data files to train against
+```python
+acq_data_path = "/rapids/data/mortgage/acq"
+perf_data_path = "/rapids/data/mortgage/perf"
+col_names_path = "/rapids/data/mortgage/names.csv"
+start_year = 2000
+end_year = 2002 # end_year is not inclusive
+part_count = 11 # the number of data files to train against
+```
 
 These are the paths to data, the number of years on which to perform ETL, and the number of parts to use for training.
 
@@ -116,28 +131,32 @@ Note: the entire mortgage dataset is 68 quarters, broken into 112 parts so that 
 
 This cell from the notebook
 
-    import subprocess
+```python
+import subprocess
 
-    cmd = "hostname --all-ip-addresses"
-    process = subprocess.Popen(cmd.split(), stdout=subprocess.PIPE)
-    output, error = process.communicate()
-    IPADDR = str(output.decode()).split()[0]
-    _client = IPADDR + str(":8786")
+cmd = "hostname --all-ip-addresses"
+process = subprocess.Popen(cmd.split(), stdout=subprocess.PIPE)
+output, error = process.communicate()
+IPADDR = str(output.decode()).split()[0]
+_client = IPADDR + str(":8786")
 
-    client = dask.distributed.Client(_client)
-    client
+client = dask.distributed.Client(_client)
+client
+```
 
 initializes the Dask client. Once done, you should see output like
 
-    Client
+```
+Client
 
-    Scheduler: tcp://172.17.0.3:8786
-    Dashboard: http://172.17.0.3:8787/status
-    Cluster
+Scheduler: tcp://172.17.0.3:8786
+Dashboard: http://172.17.0.3:8787/status
+Cluster
 
-    Workers: 8
-    Cores: 8
-    Memory: 0 B
+Workers: 8
+Cores: 8
+Memory: 0 B
+```
 
 Note: clicking `Dashboard: http://172.17.0.3:8787/status`  may not work. The IP address in the link may be the networking device in the container. You have to use the IP address of the primary networking device, which should be the one you used to access the Jupyter notebook server. `http://your.ip.address:8787/status`
 
