@@ -39,7 +39,7 @@ $ docker run --runtime=nvidia \
         -p 8786:8786 \
         rapidsai/rapidsai:cuda9.2_ubuntu1604
 jupyter@container:/rapids/notebooks/$ source activate rapids
-(rapids) jupyter@container:/rapids/notebooks/$ bash utils/start_jupyter.sh
+(rapids) jupyter@container:/rapids/notebooks/$ bash utils/start-jupyter.sh
 ```
 **NOTE:** This will run JupyterLab on port 8888 on your host machine
 
