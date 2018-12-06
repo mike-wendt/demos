@@ -33,12 +33,12 @@ Get started with our preconfigured RAPIDS demo container, featuring several demo
 
 ## Available Tags
 
-* `cuda9.2_ubuntu1604` - CUDA 9.2, Ubuntu 16.04
+* `cuda9.2_ubuntu16.04` - CUDA 9.2, Ubuntu 16.04
     *  Based off of `nvidia/cuda:9.2-devel-ubuntu16.04`.
     *  All code projects compiled with `nvcc` version 9.2.
     *  Python 3.5 and gcc5.
 
-* `cuda10.0_ubuntu1604` - CUDA 10.0, Ubuntu 16.04
+* `cuda10.0_ubuntu16.04` - CUDA 10.0, Ubuntu 16.04
     *  Based off of `nvidia/cuda:10.0-devel-ubuntu16.04`.
     *  All code projects compiled with `nvcc` version 10.0.
     *  Python 3.5 and gcc5.
@@ -55,7 +55,7 @@ docker run --runtime=nvidia \
    -p 8888:8888 \
    -p 8787:8787 \
    -p 8786:8786 \
-   rapidsai/rapidsai:cuda9.2_ubuntu1604
+   rapidsai/rapidsai:cuda9.2_ubuntu16.04
 ```
 
 2.  Activate the `rapids` conda environment:
@@ -89,7 +89,7 @@ docker run --runtime=nvidia \
    -p 8787:8787 \
    -p 8786:8786 \
    -v /path/to/host/data:/rapids/my_data
-   rapidsai/rapidsai:cuda9.2_ubuntu1604
+   rapidsai/rapidsai:cuda9.2_ubuntu16.04
 ```
 
 This will map data from your host operating system to the container OS in the `/rapids/my_data` directory. You may need to modify the provided notebooks for the new data paths. 
