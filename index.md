@@ -31,13 +31,13 @@ The RAPIDS Docker containers are configured to run RAPIDS and provide example da
 ### Start Container and Notebook Server
 
 ```bash
-$ docker pull rapidsai/rapidsai:cuda9.2_ubuntu1604
+$ docker pull rapidsai/rapidsai:cuda9.2_ubuntu16.04
 $ docker run --runtime=nvidia \
         --rm -it \
         -p 8888:8888 \
         -p 8787:8787 \
         -p 8786:8786 \
-        rapidsai/rapidsai:cuda9.2_ubuntu1604
+        rapidsai/rapidsai:cuda9.2_ubuntu16.04
 jupyter@container:/rapids/notebooks/$ source activate rapids
 (rapids) jupyter@container:/rapids/notebooks/$ bash utils/start-jupyter.sh
 ```
