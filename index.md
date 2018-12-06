@@ -6,7 +6,7 @@ permalink: /
 ---
 
 
-# Explore and learn about RAPIDS
+# Explore and Learn About RAPIDS
 {: .fs-9 }
 
 Leverage containers, demos, and notebooks from the RAPIDS team and community to explore RAPIDS hands on. For more information about RAPIDS visit [rapids.ai](http://rapids.ai)
