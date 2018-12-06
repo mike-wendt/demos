@@ -28,8 +28,8 @@ Get started with our preconfigured RAPIDS demo container, featuring several demo
 
 ## Container Hosts
 
-* Docker Hub - <https://hub.docker.com/r/rapidsai/rapidsai/>
-* NVIDA GPU Cloud - <https://ngc.nvidia.com/catalog/containers/nvidia%2Frapidsai%2Frapidsai>
+* [Docker Hub](https://hub.docker.com/r/rapidsai/rapidsai/)
+* [NVIDA GPU Cloud](https://ngc.nvidia.com/catalog/containers/nvidia%2Frapidsai%2Frapidsai)
 
 ## Available Tags
 
