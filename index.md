@@ -18,9 +18,7 @@ Leverage containers, demos, and notebooks from the RAPIDS team and community to 
 
 ## Getting started
 
-### Quick start: Use the RAPIDS Docker Container
-
-#### Prerequisites
+### Prerequisites
 
 *   GPU support
     *   Compute Capability 6.0 (Pascal Architecture) or higher
@@ -32,7 +30,7 @@ Leverage containers, demos, and notebooks from the RAPIDS team and community to 
     *   [Docker CE v18+](https://docs.docker.com/install/linux/docker-ce/ubuntu/) - _apt for Ubuntu 16.04 **doesn't** include v18+ by default_
     *   [nvidia-docker v2+](https://github.com/nvidia/nvidia-docker/wiki/Installation-%28version-2.0%29)
 
-#### Start Container and Notebook Server
+### Start Container and Notebook Server
 
 ```bash
 $ docker pull rapidsai/rapidsai:cuda9.2_ubuntu1604
@@ -47,7 +45,7 @@ jupyter@container:/rapids/notebooks/$ source activate rapids
 ```
 **NOTE:** This will run JupyterLab on port 8888 on your host machine
 
-#### Use JupyterLab to Explore the Notebooks
+### Use JupyterLab to Explore the Notebooks
 
 Notebooks can be found in two directories within the container:
 
@@ -56,10 +54,10 @@ Notebooks can be found in two directories within the container:
 * `/rapids/notebooks/mortgage` - cuDF, Dask, XGBoost demo notebook
   * This notebook requires additional data to be downloaded, and setup see notebook `E2E.ipynb` for more details
 
-### Custom data and advanced usage 
+## Custom data and advanced usage 
 
 See the [RAPIDS Demo Container](containers/rapids-demo) page for more information about using custom datasets.
 
-## Issues?
+## Issues
 
 File an issue [here](https://github.com/rapidsai/demos/issues/new) for any unexpected problems encountered with any of the information on this site.
