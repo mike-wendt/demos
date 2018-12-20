@@ -10,7 +10,9 @@ permalink: datasets/mortgage-viz-data
 
 ## Data Details
 
-For the cuXfilter GTC mortgage visualization demo to work, the properly scored and formatted dataset (2006-2017) is required and available for [download here (1.9GB)](https://s3.us-east-2.amazonaws.com/rapidsai-data/viz-data/146M_predictions_v2.arrow.gz).
+For the cuXfilter GTC mortgage visualization demo to work, the properly scored and formatted dataset (2006-2017) is required and available for [download here (1.9GB)](https://s3.us-east-2.amazonaws.com/rapidsai-data/viz-data/146M_predictions_v2.arrow.gz). 
+
+For more details about its context read our blog [Accelerating Cross Filtering with cuDF](https://medium.com/rapids-ai/accelerating-cross-filtering-with-cudf-3b4c29c89292).
 
 The raw data comes from the [Mortgage Data Section](https://rapidsai.github.io/demos/datasets/mortgage-data) and the risk score is generated from a model trained on an end to end workflow using the RAPIDS framework. 
 
