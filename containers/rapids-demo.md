@@ -108,6 +108,14 @@ This prints the function signature and its usage documentation. If this is not e
 
 Check out the RAPIDS [documentation](http://rapids.ai/documentation.html) for more detailed information.
 
+## Changing How Many GPUs are Used
+
+In the notebook,  you should see a cell like this:
+
+```cmd = "../utils/dask-setup.sh rapids GPU 8 8786 8787 8790 " + str(IPADDR) + " MASTER INFO"```
+
+Change the "GPU 8" to be "GPU X" where X = number of GPUs in your system (e.g. 4 for DGX Station, 8 for DGX-1, 16 for DGX-2).
+
 ## Changing How Much Data is Used
 
 In the notebook, you should see a cell like this:
