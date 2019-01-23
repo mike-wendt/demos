@@ -117,7 +117,7 @@ acq_data_path = "/rapids/data/mortgage/acq"
 perf_data_path = "/rapids/data/mortgage/perf"
 col_names_path = "/rapids/data/mortgage/names.csv"
 start_year = 2000
-end_year = 2002 # end_year is not inclusive
+end_year = 2002 # end_year is inclusive
 part_count = 11 # the number of data files to train against
 ```
 
