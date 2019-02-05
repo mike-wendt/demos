@@ -14,101 +14,122 @@ Get started with our preconfigured RAPIDS demo container, featuring several demo
 1. TOC
 {:toc}
 
+### Versions
+
+#### RAPIDS 0.5 - 31 Jan 2019
+
+Versions of libraries included in the `0.5` [images](#rapids-05-images):
+
+- `cuDF` [v0.5.0](https://github.com/rapidsai/cudf/tree/v0.5.0), `cuML` [v0.5.0](https://github.com/rapidsai/cuml/tree/v0.5.0), `RMM` [v0.5.0](https://github.com/rapidsai/RMM/tree/v0.5.0)
+- `xgboost` [branch](https://github.com/rapidsai/xgboost/tree/cudf-mnmg-abi), `dask-xgboost` [branch](https://github.com/rapidsai/dask-xgboost/tree/dask-cudf), `dask-cudf` [branch](https://github.com/rapidsai/dask-cudf), `dask-cuda` [branch](https://github.com/rapidsai/dask-cuda)
+
+#### RAPIDS 0.4 - 05 Dec 2018
+
+Versions of libraries included in the `0.4` [images](#rapids-04-images):
+
+- `cuDF` [v0.4.0](https://github.com/rapidsai/cudf/tree/v0.4.0), `cuML` [v0.4.0](https://github.com/rapidsai/cuml/tree/v0.4.0)
+- `xgboost`, `dask-xgboost`, `dask-cudf`
+
+### Tags
+
+The RAPIDS image is based on [nvidia/cuda](https://hub.docker.com/r/nvidia/cuda).
+This means it is a drop-in replacement, making it easy to gain the RAPIDS
+libraries while maintaining support for existing CUDA applications.
+
+RAPIDS images come in three types:
+
+- `base` - contains a RAPIDS environment ready for use.<br/>Use this image if you want to use RAPIDS as a part of your pipeline.
+- `runtime` - extends the `base` image by adding a notebook server and example notebooks.<br/>Use this image if you want to explore RAPIDS through notebooks and examples.
+- `devel` - extends the `runtime` image by adding the compiler toolchain, the debugging tools, the headers and the static libraries for RAPIDS development.<br/>Use this image to develop RAPIDS from source.
+
+#### Common Tags
+
+For most users the `runtime` image will be sufficient to get started with RAPIDS,
+you can use the following tags to pull the latest stable image:
+- `latest` or `cuda9.2-runtime-ubuntu16.04` <br/>with `gcc 5.4` and `Python 3.6`
+- `cuda10.0-runtime-ubuntu16.04`<br/>with `gcc 7.3` and `Python 3.6`
+
+#### Other Tags
+
+View the full [tag list](#full-tag-list) for all available images.
+
 ## Prerequisites
 
-*   GPU support
-    *   Compute Capability 6.0 (Pascal Architecture) or higher
-*   CUDA support
-    *   9.2 or newer
-*   OS support
-    *   Ubuntu 16.04 LTS (tested and confirmed working)
-*   Docker support
-    *   [Docker CE v18+](https://docs.docker.com/install/linux/docker-ce/ubuntu/) - _apt for Ubuntu 16.04 **doesn't** include v18+ by default_
-    *   [nvidia-docker v2+](https://github.com/nvidia/nvidia-docker/wiki/Installation-%28version-2.0%29)
-
-## Container Hosts
-
-* [Docker Hub](https://hub.docker.com/r/rapidsai/rapidsai/)
-* [NVIDA GPU Cloud](https://ngc.nvidia.com/catalog/containers/nvidia%2Frapidsai%2Frapidsai)
-
-## Available Tags
-
-* `cuda9.2_ubuntu16.04` - CUDA 9.2, Ubuntu 16.04
-    *  Based off of `nvidia/cuda:9.2-devel-ubuntu16.04`.
-    *  All code projects compiled with `nvcc` version 9.2.
-    *  Python 3.5 and gcc5.
-
-* `cuda10.0_ubuntu16.04` - CUDA 10.0, Ubuntu 16.04
-    *  Based off of `nvidia/cuda:10.0-devel-ubuntu16.04`.
-    *  All code projects compiled with `nvcc` version 10.0.
-    *  Python 3.5 and gcc5.
-
-* _Coming soon_ - more tags supporing CUDA 10 and Ubuntu 18.04
+* NVIDIA Pascal™ GPU architecture or better
+* CUDA [9.2](https://developer.nvidia.com/cuda-92-download-archive) or [10.0](https://developer.nvidia.com/cuda-downloads) compatible NVIDIA driver
+* Ubuntu 16.04 or 18.04
+* Docker CE v18+
+* [nvidia-docker](https://github.com/nvidia/nvidia-docker/wiki/Installation-(version-2.0)) v2+
 
 ## Usage
 
-1.  First launch an interactive session:
+### Start Container and Notebook Server
 
 ```bash
-docker run --runtime=nvidia \
-   --rm -it \
-   -p 8888:8888 \
-   -p 8787:8787 \
-   -p 8786:8786 \
-   rapidsai/rapidsai:cuda9.2_ubuntu16.04
+$ docker pull rapidsai/rapidsai:cuda9.2-runtime-ubuntu16.04
+$ docker run --runtime=nvidia \
+        --rm -it \
+        -p 8888:8888 \
+        -p 8787:8787 \
+        -p 8786:8786 \
+        rapidsai/rapidsai:cuda9.2-runtime-ubuntu16.04
+root@container:/rapids/notebooks/$ source activate rapids
+(rapids) root@container:/rapids/notebooks/$ bash utils/start-jupyter.sh
 ```
+**NOTE:** This will run [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/) on port 8888 on your host machine.
 
-2.  Activate the `rapids` conda environment:
+### Use JupyterLab to Explore the Notebooks
 
-```bash
-source activate rapids
-```
+Notebooks can be found in two directories within the container:
 
-3.  Download the mortgage dataset, following the instructions provided at <https://rapidsai.github.io/demos/datasets/mortgage-data>
+* `/rapids/notebooks/cuml` - cuML demo notebooks
+  * These notebooks have data pre-loaded in the container image and will be decompressed by the notebooks
+* `/rapids/notebooks/mortgage` - cuDF, Dask, XGBoost demo notebook
+  * This notebook requires download of [Mortgage Data](https://rapidsai.github.io/demos/datasets/mortgage-data), see notebook `E2E.ipynb` for more details
 
-    You will need to update paths and years in the notebook (see below) depending on which subset of the mortgage data you download and where you install it.
-
-4.  Launch the JupyterLab environment with
-
-```bash
-bash /rapids/utils/start_jupyter.sh
-```
-
-5.  Open your web browser, and navigate to  
-    `{IPADDR}:8888` (e.g.) `12.34.567.89:8888`  
-    Note: the IP address can be found using `ifconfig` or `hostname --all-ip-addresses`. It is the address of the primary networking device. Using the IP address of the device in the Docker container will not work.
-
-In `/rapids/notebooks` there are example notebooks, including one called `E2E.ipynb` that runs end-to-end ETL and machine learning on the provided data using RAPIDS. Be sure to `Restart the Kernel`
+### Custom Data and Advanced Usage
 
 You are free to modify the above steps. For example, you can launch an interactive session with your own data:
 
-```bash
-docker run --runtime=nvidia \
-   --rm -it \
-   -p 8888:8888 \
-   -p 8787:8787 \
-   -p 8786:8786 \
-   -v /path/to/host/data:/rapids/my_data
-   rapidsai/rapidsai:cuda9.2_ubuntu16.04
-```
+    docker run --runtime=nvidia \
+               --rm -it \
+               -p 8888:8888 \
+               -p 8787:8787 \
+               -p 8786:8786 \
+               -v /path/to/host/data:/rapids/my_data
+               rapidsai/rapidsai:cuda9.2-runtime-ubuntu16.04
 
 This will map data from your host operating system to the container OS in the `/rapids/my_data` directory. You may need to modify the provided notebooks for the new data paths. 
 
+### Access Documentation within Notebooks
+
 You can check the documentation for RAPIDS APIs inside the JupyterLab notebook using a `?` command, like this:
 
-```
-[1] ?cudf.read_csv
-```
+    [1] ?cudf.read_csv
 
 This prints the function signature and its usage documentation. If this is not enough, you can see the full code for the function using `??`:
 
-```
-[1] ??pygdf.read_csv
-```
+    [1] ??pygdf.read_csv
 
-Check out the RAPIDS [documentation](http://rapids.ai/documentation.html) for more detailed information.
+Check out the RAPIDS [documentation](http://rapids.ai/start.html) for more detailed information and a RAPIDS [cheat sheet](https://rapids.ai/files/cheatsheet.pdf).
 
-## Changing How Many GPUs are Used
+## More Information
+
+Check out the [cuDF](https://rapidsai.github.io/projects/cudf/en/latest), [cuML](https://rapidsai.github.io/projects/cuml/en/latest), and [XGBoost](https://xgboost.readthedocs.io/en/latest/) API docs.
+
+Learn how to setup a mult-node cuDF and XGBoost data preparation and distributed training environment by following the [mortgage data example notebook and scripts](https://github.com/rapidsai/notebooks).
+
+### Where can I get help or file bugs/requests?
+
+Please submit issues with the container to this GitHub repository: [https://github.com/rapidsai/demos](https://github.com/rapidsai/demos/issues/new)
+
+For issues with RAPIDS libraries like cuDF, cuML, RMM, or others file an issue in the related GitHub project.
+
+Additional help can be found on [Stack Overflow](https://stackoverflow.com/tags/rapids) or [Google Groups](https://groups.google.com/forum/#!forum/rapidsai).
+
+## Useful Tips and Tools for Monitoring and Debugging
+
+### Changing How Many GPUs are Used
 
 In the notebook,  you should see a cell like this:
 
@@ -116,7 +137,7 @@ In the notebook,  you should see a cell like this:
 
 Change the "GPU 8" to be "GPU X" where X = number of GPUs in your system (e.g. 4 for DGX Station, 8 for DGX-1, 16 for DGX-2).
 
-## Changing How Much Data is Used
+### Changing How Much Data is Used
 
 In the notebook, you should see a cell like this:
 
@@ -132,8 +153,6 @@ part_count = 11 # the number of data files to train against
 These are the paths to data, the number of years on which to perform ETL, and the number of parts to use for training.
 
 Note: the entire mortgage dataset is 68 quarters, broken into 112 parts so that each part is (on average) 1.7GB. Reducing the number of parts, `part_count`, reduces how much data is input to XGBoost training. Adjusting the `start_year` and`end_year` changes how many years on which to perform ETL.
-
-## Useful Tips and Tools for Monitoring and Debugging
 
 ### The Dask Dashboard. 
 
@@ -190,6 +209,93 @@ Training processes need a certain amount of available memory to expand throughou
 
 The final step of the ETL process migrates all computed results back to system memory before training, and if you do not have sufficient system memory, your program will crash. The step before training migrates a portion of the data back into device memory for XGBoost to train against.
 
-## Where can I get help or file bugs/requests?
+## Full Tag List
 
-Please submit issues with the container to this GitHub repository: [https://github.com/rapidsai/cudf](https://github.com/rapidsai/cudf)
+Using the image types [above](#tags) `base`, `runtime`, or `devel` we use the following
+tag naming scheme for RAPIDS images:
+
+```
+0.5-cuda9.2-devel-ubuntu16.04-gcc5-py3.6
+ ^       ^    ^           ^      ^    ^
+ |       |    type        |      |    python version
+ |       |                |      |    
+ |       cuda version     |      gcc version
+ |                        |      
+ RAPIDS version           ubuntu version
+ ```
+
+### RAPIDS 0.5 Images
+
+#### Ubuntu 16.04
+
+All `ubuntu16.04` images use `gcc 5.4`
+
+**CUDA 9.2**
+
+| Short Tags | Full Tag | Image Type | Python Version |
+| --- | --- | --- | --- |
+| `cuda9.2-base-ubuntu16.04` | `0.5-cuda9.2-base-ubuntu16.04-gcc5-py3.6` | base | 3.6 |
+| - | `0.5-cuda9.2-base-ubuntu16.04-gcc5-py3.7` | base | 3.7 |
+| `latest`, `cuda9.2-runtime-ubuntu16.04` | `0.5-cuda9.2-runtime-ubuntu16.04-gcc5-py3.6` | runtime | 3.6 |
+| - | `0.5-cuda9.2-runtime-ubuntu16.04-gcc5-py3.7` | runtime | 3.7 |
+| `cuda9.2-devel-ubuntu16.04` | `0.5-cuda9.2-devel-ubuntu16.04-gcc5-py3.6` | devel | 3.6 |
+| - | `0.5-cuda9.2-devel-ubuntu16.04-gcc5-py3.7` | devel | 3.7 |
+
+**CUDA 10.0**
+
+| Short Tags | Full Tag | Image Type | Python Version |
+| --- | --- | --- | --- |
+| `cuda10.0-base-ubuntu16.04` | `0.5-cuda10.0-base-ubuntu16.04-gcc5-py3.6` | base | 3.6 |
+| - | `0.5-cuda10.0-base-ubuntu16.04-gcc5-py3.7` | base | 3.7 |
+| `cuda10.0-runtime-ubuntu16.04` | `0.5-cuda10.0-runtime-ubuntu16.04-gcc5-py3.6` | runtime | 3.6 |
+| - | `0.5-cuda10.0-runtime-ubuntu16.04-gcc5-py3.7` | runtime | 3.7 |
+| `cuda10.0-devel-ubuntu16.04` | `0.5-cuda10.0-devel-ubuntu16.04-gcc5-py3.6` | devel | 3.6 |
+| - | `0.5-cuda10.0-devel-ubuntu16.04-gcc5-py3.7` | devel | 3.7 |
+
+#### Ubuntu 18.04
+
+All `ubuntu18.04` images use `gcc 7.3`
+
+**CUDA 9.2**
+
+| Short Tags | Full Tag | Image Type | Python Version |
+| --- | --- | --- | --- |
+| `cuda9.2-base-ubuntu18.04` | `0.5-cuda9.2-base-ubuntu18.04-gcc7-py3.6` | base | 3.6 |
+| - | `0.5-cuda9.2-base-ubuntu18.04-gcc7-py3.7` | base | 3.7 |
+| `cuda9.2-runtime-ubuntu18.04` | `0.5-cuda9.2-runtime-ubuntu18.04-gcc7-py3.6` | runtime | 3.6 |
+| - | `0.5-cuda9.2-runtime-ubuntu18.04-gcc7-py3.7` | runtime | 3.7 |
+| `cuda9.2-devel-ubuntu18.04` | `0.5-cuda9.2-devel-ubuntu18.04-gcc7-py3.6` | devel | 3.6 |
+| - | `0.5-cuda9.2-devel-ubuntu18.04-gcc7-py3.7` | devel | 3.7 |
+
+**CUDA 10.0**
+
+| Short Tags | Full Tag | Image Type | Python Version |
+| --- | --- | --- | --- |
+| `cuda10.0-base-ubuntu18.04` | `0.5-cuda10.0-base-ubuntu18.04-gcc7-py3.6` | base | 3.6 |
+| - | `0.5-cuda10.0-base-ubuntu18.04-gcc7-py3.7` | base | 3.7 |
+| `cuda10.0-runtime-ubuntu18.04` | `0.5-cuda10.0-runtime-ubuntu18.04-gcc7-py3.6` | runtime | 3.6 |
+| - | `0.5-cuda10.0-runtime-ubuntu18.04-gcc7-py3.7` | runtime | 3.7 |
+| `cuda10.0-devel-ubuntu18.04` | `0.5-cuda10.0-devel-ubuntu18.04-gcc7-py3.6` | devel | 3.6 |
+| - | `0.5-cuda10.0-devel-ubuntu18.04-gcc7-py3.7` | devel | 3.7 |
+
+### RAPIDS 0.4 Images
+
+**NOTE:** This release uses *non-standard* lables but have been kept for legacy users.
+
+#### Ubuntu 16.04
+
+All `ubuntu16.04` images use `gcc 5.4`
+
+**CUDA 9.2**
+
+| Full Tag | Image Type | Python Version | Notes |
+| --- | --- | --- | --- |
+| `cuda9.2_ubuntu16.04` | runtime | 3.5 | `jupyter` user by default |
+| `cuda9.2_ubuntu16.04_root` | runtime | 3.5 | `root` user by default |
+
+**CUDA 10.0**
+
+| Full Tag | Image Type | Python Version | Notes |
+| --- | --- | --- | --- |
+| `cuda10.0_ubuntu16.04` | runtime | 3.5 | `jupyter` user by default |
+| `cuda10.0_ubuntu16.04_root` | runtime | 3.5 | `root` user by default |
