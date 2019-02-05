@@ -12,9 +12,13 @@ permalink: /
 Leverage containers, demos, and notebooks from the RAPIDS team and community to explore RAPIDS hands on. For more information about RAPIDS visit [rapids.ai](http://rapids.ai)
 {: .fs-6 .fw-300 }
 
-[Get started now](#run-the-rapids-container){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } [View RAPIDS on GitHub](https://github.com/rapidsai){: .btn .fs-5 }
+[Get started now](#get-rapids){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } [View RAPIDS on GitHub](https://github.com/rapidsai){: .btn .fs-5 }
 
 ---
+
+## Get RAPIDS
+
+Use the RAPIDS [install assistant](https://rapids.ai/start.html) to select your preferred install method and environment. Otherwise, use the steps below to launch a pre-configured docker container with examples. 
 
 ## Run the RAPIDS Container
 
@@ -31,13 +35,13 @@ The RAPIDS Docker containers are configured to run RAPIDS and provide example da
 ### Start Container and Notebook Server
 
 ```bash
-$ docker pull rapidsai/rapidsai:cuda9.2_ubuntu16.04
+$ docker pull rapidsai/rapidsai:cuda9.2-runtime-ubuntu16.04
 $ docker run --runtime=nvidia \
         --rm -it \
         -p 8888:8888 \
         -p 8787:8787 \
         -p 8786:8786 \
-        rapidsai/rapidsai:cuda9.2_ubuntu16.04
+        rapidsai/rapidsai:cuda9.2-runtime-ubuntu16.04
 jupyter@container:/rapids/notebooks/$ source activate rapids
 (rapids) jupyter@container:/rapids/notebooks/$ bash utils/start-jupyter.sh
 ```
@@ -52,9 +56,9 @@ Notebooks can be found in two directories within the container:
 * `/rapids/notebooks/mortgage` - cuDF, Dask, XGBoost demo notebook
   * This notebook requires download of [Mortgage Data](datasets/mortgage-data), see notebook `E2E.ipynb` for more details
 
-## Custom Data and Advanced Usage 
+### Custom Data and Advanced Usage
 
-See the [RAPIDS Demo Container](containers/rapids-demo) page for more information about using custom datasets.
+See the [RAPIDS Demo Container](containers/rapids-demo) page for more information about using custom datasets and other types of containers that are available.
 
 ## Issues
 
